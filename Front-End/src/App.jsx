@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import Header  from './components/header'
+import MainContent from './components/mainCon'
+import Footer from './components/Footer'
+import BrowseItems from './components/BrowseItems'
+import MyItems from './components/MyItems'
+import Swaps from './components/Swaps'
 
-function App() {
-  const [count, setCount] = useState(0)
-  console.log("hello")
-  console.log("yash")
+// Create a HomePage component that combines Header, MainContent, and Footer
+const HomePage = () => {
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <MainContent />
+      <Footer />
     </>
+  )
+}
+
+function App() {
+  return (
+    <div className='px-4 sm:px-[5vw] md:px-[7vw] lg:px-[9vw]'>
+      <Routes>
+        <Route path='/' element={<HomePage />} />
+        <Route path='/browse' element={<BrowseItems />} />
+        <Route path='/my-items' element={<MyItems />} />
+        <Route path='/swaps' element={<Swaps />} />
+      </Routes>
+    </div>
   )
 }
 
